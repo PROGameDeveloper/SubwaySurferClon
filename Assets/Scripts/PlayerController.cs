@@ -32,6 +32,15 @@ public class PlayerController : MonoBehaviour
     private int IdRoll = Animator.StringToHash("Roll");
     private int _IdStumbleLow = Animator.StringToHash("StumbleLow");
     public  int IdStumbleLow { get => _IdStumbleLow; set => _IdStumbleLow = value; }
+    private int _IdDeathLower = Animator.StringToHash("DeathLower");
+    public int IdDeathLower { get => _IdDeathLower; set => _IdDeathLower = value; }
+    private int _IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
+    public int IdDeathMovingTrain { get => _IdDeathMovingTrain; set => _IdDeathMovingTrain = value; }
+    private int _IdDeathBounce = Animator.StringToHash("DeathBounce");
+    public int IdDeathBounce { get => _IdDeathBounce; set => _IdDeathBounce = value; }
+    private int _IdDeathUpper = Animator.StringToHash("DeathUpper");
+    public int IdDeathUpper { get => _IdDeathUpper; set => _IdDeathUpper = value; }
+
     private int IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
     private int IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
     private int IdStumbleFall = Animator.StringToHash("StumbleFall");
@@ -39,18 +48,14 @@ public class PlayerController : MonoBehaviour
     private int IdStumbleOffRight = Animator.StringToHash("StumbleOffRight");
     private int IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
     private int IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
-    private int IdDeathBounce = Animator.StringToHash("DeathBounce");
-    private int IdDeathLower = Animator.StringToHash("DeathLower");
-    private int IdDeathMovingTrain = Animator.StringToHash("DeathMovingTrain");
-    private int IdDeathUpper = Animator.StringToHash("DeathUpper");
-
-
-
+ 
     private bool swipeLeft, swipeRight, swipeUp, swipeDown;
-    
     [Header("Player States")]
     [SerializeField] private bool isJumping;
-    [SerializeField] private bool isRolling;
+    [SerializeField] private bool _isRolling;
+    public bool IsRolling { get => _isRolling; set => _isRolling = value; }
+  
+
     [SerializeField] private bool isGrounded;
 
     void Start()
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        if (swipeLeft && !isRolling)
+        if (swipeLeft && !_isRolling)
         {
             if (position == Side.Middle)
             {
@@ -95,7 +100,7 @@ public class PlayerController : MonoBehaviour
                 SetPlayerAnimator(IdDodgeLeft, false);
             }
         }
-        else if (swipeRight && !isRolling)
+        else if (swipeRight && !_isRolling)
         {
             if (position == Side.Middle)
             {
@@ -144,7 +149,7 @@ public class PlayerController : MonoBehaviour
             {
                 SetPlayerAnimator(IdLanding, false);
             }
-            if (swipeUp && !isRolling)
+            if (swipeUp && !_isRolling)
             {
                 isJumping = true;
                 yPosition = jumpPower;
@@ -164,7 +169,7 @@ public class PlayerController : MonoBehaviour
         rollTimer -= Time.deltaTime;
         if (rollTimer <= 0)
         {
-            isRolling = false;
+            _isRolling = false;
             rollTimer = 0;
             _myCharacterController.center = new Vector3(0, .45f, 0);
             _myCharacterController.height = .9f;
@@ -172,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
         if (swipeDown && !isJumping)
         {
-            isRolling = true;
+            _isRolling = true;
             rollTimer = .5f;
             SetPlayerAnimator(IdRoll, true);
             _myCharacterController.center = new Vector3(0, .2f, 0);

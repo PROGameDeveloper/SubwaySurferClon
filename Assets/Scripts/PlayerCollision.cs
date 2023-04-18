@@ -20,21 +20,40 @@ public class PlayerCollision : MonoBehaviour
        playerController= gameObject.GetComponent<PlayerController>();
     }
 
-    public void OnCharacterCollision(Collider col)
+    public void OnCharacterCollision(Collider collider)
     {
-        collisionX = GetCollisionX(col);  
-        collisionY = GetCollisionY(col);
-        collisionZ = GetCollisionZ(col);
-        SetAnimatorByCollision();
+        collisionX = GetCollisionX(collider);  
+        collisionY = GetCollisionY(collider);
+        collisionZ = GetCollisionZ(collider);
+        SetAnimatorByCollision(collider);
     }
 
-    private void SetAnimatorByCollision()
+    private void SetAnimatorByCollision(Collider collider)
     {
         if (collisionZ == CollisionZ.Backward && collisionX == CollisionX.Middle)
         {
             if (collisionY == CollisionY.LowDown)
             {
                 playerController.SetPlayerAnimator(playerController.IdStumbleLow,false);
+            }
+            else if (collisionY == CollisionY.Down)
+            {
+                playerController.SetPlayerAnimator(playerController.IdDeathLower, false);
+            }
+            else if (collisionY == CollisionY.Middle)
+            {
+                if (collider.CompareTag("TrainOn"))
+                {
+                    playerController.SetPlayerAnimator(playerController.IdDeathMovingTrain, false);
+                }
+                else 
+                {
+                    playerController.SetPlayerAnimator(playerController.IdDeathBounce, false);
+                }
+            }
+            else if (collisionY == CollisionY.Up && !playerController.IsRolling)
+            {
+                playerController.SetPlayerAnimator(playerController.IdDeathUpper, false);
             }
         }
     }
