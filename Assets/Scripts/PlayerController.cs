@@ -7,9 +7,11 @@ public enum Side { Left = -2, Middle = 0, Right= 2}
 public class PlayerController : MonoBehaviour
 {
     private Transform myTransform;
-    private Animator myAnimator;
+    private Animator _animator;
+    public Animator Animator { get => _animator; set => _animator = value; }
     private CharacterController _myCharacterController;
     public CharacterController MyCharacterController { get => _myCharacterController; set => _myCharacterController = value; }
+    private PlayerCollision playerCollision;
    
 
     private Side position;
@@ -40,29 +42,36 @@ public class PlayerController : MonoBehaviour
     public int IdDeathBounce { get => _IdDeathBounce; set => _IdDeathBounce = value; }
     private int _IdDeathUpper = Animator.StringToHash("DeathUpper");
     public int IdDeathUpper { get => _IdDeathUpper; set => _IdDeathUpper = value; }
+    private int _IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
+    public int IdStumbleCornerRight { get => _IdStumbleCornerRight; set => _IdStumbleCornerRight = value; }
+    private int _IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
+    public int IdStumbleCornerLeft { get => _IdStumbleCornerLeft; set => _IdStumbleCornerLeft = value; }
+    private int _IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
+    public int IdStumbleSideLeft { get => _IdStumbleSideLeft; set => _IdStumbleSideLeft = value; }
+    private int _IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
+    public int IdStumbleSideRight { get => _IdStumbleSideRight; set => _IdStumbleSideRight = value; }
 
-    private int IdStumbleCornerRight = Animator.StringToHash("StumbleCornerRight");
-    private int IdStumbleCornerLeft = Animator.StringToHash("StumbleCornerLeft");
     private int IdStumbleFall = Animator.StringToHash("StumbleFall");
     private int IdStumbleOffLeft = Animator.StringToHash("StumbleOffLeft");
     private int IdStumbleOffRight = Animator.StringToHash("StumbleOffRight");
-    private int IdStumbleSideLeft = Animator.StringToHash("StumbleSideLeft");
-    private int IdStumbleSideRight = Animator.StringToHash("StumbleSideRight");
+   
+  
  
     private bool swipeLeft, swipeRight, swipeUp, swipeDown;
     [Header("Player States")]
     [SerializeField] private bool isJumping;
     [SerializeField] private bool _isRolling;
     public bool IsRolling { get => _isRolling; set => _isRolling = value; }
-  
+
 
     [SerializeField] private bool isGrounded;
 
     void Start()
     {
         myTransform = GetComponent<Transform>();
-        myAnimator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         _myCharacterController = GetComponent<CharacterController>();
+        playerCollision = GetComponent<PlayerCollision>();
         position = Side.Middle;
         yPosition = -7;
     }
@@ -123,19 +132,37 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerAnimator(int id, bool isCrossFade, float fadeTime = 0.1f)
     {
+        _animator.SetLayerWeight(0, 1);
         if (isCrossFade)
         {
-            myAnimator.CrossFadeInFixedTime(id, fadeTime);
+            _animator.CrossFadeInFixedTime(id, fadeTime);
         }
         else
         {
-            myAnimator.Play(id);
+            _animator.Play(id);
         }
+        ResetCollision();
+    }
+
+    public void SetPlayerAnimatorWithLayer(int id)
+    {
+        _animator.SetLayerWeight(1, 1);
+        _animator.Play(id);
+
+        ResetCollision();
+    }
+
+    private void ResetCollision()
+    {
+        Debug.Log(playerCollision.CollisionX.ToString() + " " + playerCollision.CollisionY.ToString() + " " + playerCollision.CollisionZ.ToString());
+        playerCollision.CollisionX = CollisionX.None;
+        playerCollision.CollisionY = CollisionY.None;
+        playerCollision.CollisionZ = CollisionZ.None;
     }
 
     private void MovePlayer()
     {
-        motionVector = new Vector3(xPosition - myTransform.position.x, yPosition * Time.deltaTime, forwardSpeed*Time.deltaTime);
+        motionVector = new Vector3(xPosition - myTransform.position.x, yPosition * Time.deltaTime, forwardSpeed * Time.deltaTime);
         xPosition = Mathf.Lerp(xPosition, newXPosition, Time.deltaTime * dodgeSpeed);
         _myCharacterController.Move(motionVector);
     }
@@ -145,7 +172,7 @@ public class PlayerController : MonoBehaviour
         if (_myCharacterController.isGrounded)
         {
             isJumping = false;
-            if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
             {
                 SetPlayerAnimator(IdLanding, false);
             }

@@ -10,9 +10,13 @@ public enum CollisionZ { None, Forward, Middle, Backward }
 public class PlayerCollision : MonoBehaviour
 {
     private PlayerController playerController;
-    [SerializeField] private CollisionX collisionX;
-    [SerializeField] private CollisionY collisionY;
-    [SerializeField] private CollisionZ collisionZ;
+    [SerializeField] private CollisionX _collisionX;
+    [SerializeField] private CollisionY _collisionY;
+    [SerializeField] private CollisionZ _collisionZ;
+
+    public CollisionX CollisionX { get => _collisionX; set => _collisionX = value; }
+    public CollisionY CollisionY { get => _collisionY; set => _collisionY = value; }
+    public CollisionZ CollisionZ { get => _collisionZ; set => _collisionZ = value; }
 
     // Start is called before the first frame update
     void Awake()
@@ -22,38 +26,60 @@ public class PlayerCollision : MonoBehaviour
 
     public void OnCharacterCollision(Collider collider)
     {
-        collisionX = GetCollisionX(collider);  
-        collisionY = GetCollisionY(collider);
-        collisionZ = GetCollisionZ(collider);
+        _collisionX = GetCollisionX(collider);  
+        _collisionY = GetCollisionY(collider);
+        _collisionZ = GetCollisionZ(collider);
         SetAnimatorByCollision(collider);
     }
 
     private void SetAnimatorByCollision(Collider collider)
     {
-        if (collisionZ == CollisionZ.Backward && collisionX == CollisionX.Middle)
+        if (_collisionZ == CollisionZ.Backward && _collisionX == CollisionX.Middle)
         {
-            if (collisionY == CollisionY.LowDown)
+            if (_collisionY == CollisionY.LowDown)
             {
-                playerController.SetPlayerAnimator(playerController.IdStumbleLow,false);
+                playerController.SetPlayerAnimator(playerController.IdStumbleLow, false);
             }
-            else if (collisionY == CollisionY.Down)
+            else if (_collisionY == CollisionY.Down)
             {
                 playerController.SetPlayerAnimator(playerController.IdDeathLower, false);
             }
-            else if (collisionY == CollisionY.Middle)
+            else if (_collisionY == CollisionY.Middle)
             {
                 if (collider.CompareTag("TrainOn"))
                 {
                     playerController.SetPlayerAnimator(playerController.IdDeathMovingTrain, false);
                 }
-                else 
+                else if (!collider.CompareTag("Ramp"))
                 {
                     playerController.SetPlayerAnimator(playerController.IdDeathBounce, false);
                 }
             }
-            else if (collisionY == CollisionY.Up && !playerController.IsRolling)
+            else if (_collisionY == CollisionY.Up && !playerController.IsRolling)
             {
                 playerController.SetPlayerAnimator(playerController.IdDeathUpper, false);
+            }
+        }
+        else if (_collisionZ == CollisionZ.Middle)
+        {
+            if (_collisionX == CollisionX.Right)
+            {
+                playerController.SetPlayerAnimator(playerController.IdStumbleSideRight,false);
+            }
+            else if (_collisionX == CollisionX.Left)
+            {
+                playerController.SetPlayerAnimator(playerController.IdStumbleSideLeft, false);
+            }
+        }
+        else
+        {
+            if(_collisionX == CollisionX.Right)
+            {
+                playerController.SetPlayerAnimatorWithLayer(playerController.IdStumbleCornerRight);
+            }
+            else if (_collisionX == CollisionX.Left)
+            {
+                playerController.SetPlayerAnimatorWithLayer(playerController.IdStumbleCornerLeft);
             }
         }
     }
@@ -131,4 +157,5 @@ public class PlayerCollision : MonoBehaviour
         }
         return colz;
     }
+
 }
