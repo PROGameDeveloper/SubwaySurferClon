@@ -7,8 +7,7 @@ public enum Side { Left = -2, Middle = 0, Right= 2}
 public class PlayerController : MonoBehaviour
 {
     private Transform myTransform;
-    private Animator _animator;
-    public Animator Animator { get => _animator; set => _animator = value; }
+    private Animator animator;
     private CharacterController _myCharacterController;
     public CharacterController MyCharacterController { get => _myCharacterController; set => _myCharacterController = value; }
     private PlayerCollision playerCollision;
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myTransform = GetComponent<Transform>();
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         _myCharacterController = GetComponent<CharacterController>();
         playerCollision = GetComponent<PlayerCollision>();
         position = Side.Middle;
@@ -132,23 +131,22 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerAnimator(int id, bool isCrossFade, float fadeTime = 0.1f)
     {
-        _animator.SetLayerWeight(0, 1);
+        animator.SetLayerWeight(0, 1);
         if (isCrossFade)
         {
-            _animator.CrossFadeInFixedTime(id, fadeTime);
+            animator.CrossFadeInFixedTime(id, fadeTime);
         }
         else
         {
-            _animator.Play(id);
+            animator.Play(id);
         }
         ResetCollision();
     }
 
     public void SetPlayerAnimatorWithLayer(int id)
     {
-        _animator.SetLayerWeight(1, 1);
-        _animator.Play(id);
-
+        animator.SetLayerWeight(1, 1);
+        animator.Play(id);
         ResetCollision();
     }
 
@@ -172,7 +170,7 @@ public class PlayerController : MonoBehaviour
         if (_myCharacterController.isGrounded)
         {
             isJumping = false;
-            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
             {
                 SetPlayerAnimator(IdLanding, false);
             }
