@@ -213,10 +213,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.24
-  m_Height: 0.8
+  m_Radius: 0.34
+  m_Height: 1.01
   m_Direction: 1
-  m_Center: {x: 0, y: 0.47, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0.2}
 --- !u!54 &463625030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1179,7 +1179,7 @@ Transform:
   - {fileID: 3401005821895991865}
   - {fileID: 547572643774652791}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7117110755541225961
 Animator:
@@ -1239,8 +1239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70428c916c865a49b02244cd411ca6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 12
-  jumpPower: 15
+  forwardSpeed: 15
+  jumpPower: 8
   dodgeSpeed: 10
   isJumping: 0
   _isRolling: 0
@@ -1257,6 +1257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796af8c7afc6ddf43847b670a822400f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionX: 0
+  _collisionY: 0
+  _collisionZ: 0
 --- !u!1 &4315825043257146371
 GameObject:
   m_ObjectHideFlags: 0
