@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 937300719589503821}
   m_Layer: 0
   m_Name: train_ramp
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 937300719678253784}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &937300719589503820
 MeshFilter:
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
+  - {fileID: 2100000, guid: 9d3597de6ed1b9a408d75408fe1cc4f4, type: 2}
   - {fileID: 2100000, guid: bdb76dd4e900a7f47bf01a1f78f63fc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 937300719678253791}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937300719678253785}
   m_LocalRotation: {x: -0.19762032, y: -0, z: -0, w: 0.98027873}
-  m_LocalPosition: {x: 0, y: 1.35, z: -0.84}
+  m_LocalPosition: {x: 0, y: 1.4, z: -0.8}
   m_LocalScale: {x: 0.1875, y: 1, z: 0.8023434}
   m_ConstrainProportionsScale: 0
   m_Children: []

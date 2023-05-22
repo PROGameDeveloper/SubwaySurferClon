@@ -179,14 +179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: train_cargo_3 (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6405076544102012539, guid: 0ee1b30bc8f89044cb7bdd0141e8a469, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bdb76dd4e900a7f47bf01a1f78f63fc3, type: 2}
-    - target: {fileID: 6405076544102012539, guid: 0ee1b30bc8f89044cb7bdd0141e8a469, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -463,10 +455,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: train_sub_3
       objectReference: {fileID: 0}
-    - target: {fileID: 8869810932229499639, guid: d1d76b08b2f8bb44282e8404a0311989, type: 3}
-      propertyPath: m_TagString
-      value: TrainOn
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -582,52 +570,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 26.03918, y: 1, z: 21.189503}
   m_Center: {x: 0.38994932, y: -0.5, z: 8.251011}
---- !u!1 &216219525
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 216219528}
-  - component: {fileID: 216219526}
-  m_Layer: 0
-  m_Name: ResetPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &216219526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216219525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2817e47f9e4e5b438f57c2cbe56231c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_camera: {fileID: 6737867897083583145}
-  player: {fileID: 875103068}
---- !u!4 &216219528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216219525}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 15.605745, y: 11.409623, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248851163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,10 +982,6 @@ PrefabInstance:
     - target: {fileID: 6405076544102012538, guid: 0ee1b30bc8f89044cb7bdd0141e8a469, type: 3}
       propertyPath: m_Name
       value: train_cargo_3 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6405076544102012538, guid: 0ee1b30bc8f89044cb7bdd0141e8a469, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1487,7 +1425,7 @@ PrefabInstance:
     - target: {fileID: 937300719589503821, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
+      objectReference: {fileID: 2100000, guid: 9d3597de6ed1b9a408d75408fe1cc4f4, type: 2}
     - target: {fileID: 937300719589503821, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -1846,11 +1784,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 26.03918, y: 1, z: 21.189503}
   m_Center: {x: 0.38994932, y: -0.5, z: 8.251011}
---- !u!1 &875103068 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4185062997399948928, guid: 1245b431be51fc047a85a685855d9d19, type: 3}
-  m_PrefabInstance: {fileID: 350224646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &959217046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1793,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 959217047}
-  - component: {fileID: 959217048}
   m_Layer: 0
   m_Name: CurveLevel
   m_TagString: Untagged
@@ -1895,24 +1827,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &959217048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959217046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38dd7a779815118439cedc769e0ca91d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curveX: 0
-  curveY: 0
-  materials:
-  - {fileID: 2100000, guid: 3d4a515bc1e8a37489a8361c5bb4ef02, type: 2}
-  - {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
-  - {fileID: 2100000, guid: bdb76dd4e900a7f47bf01a1f78f63fc3, type: 2}
 --- !u!1 &1000399635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,25 +2788,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 959217047}
     m_Modifications:
-    - target: {fileID: 937300719589503821, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719589503821, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
-    - target: {fileID: 937300719589503821, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: bdb76dd4e900a7f47bf01a1f78f63fc3, type: 2}
     - target: {fileID: 937300719589503822, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
       propertyPath: m_Name
       value: train_ramp
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719589503822, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_TagString
-      value: Ramp
       objectReference: {fileID: 0}
     - target: {fileID: 937300719589503859, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
       propertyPath: m_RootOrder
@@ -2937,26 +2835,6 @@ PrefabInstance:
     - target: {fileID: 937300719589503859, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719678253784, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719678253784, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719678253785, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_TagString
-      value: Ramp
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719678253791, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 937300719678253791, guid: a52427957fcb05942b0caaa1e005568d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8869810932229499627}
   m_Layer: 0
   m_Name: train_sub_3
-  m_TagString: Untagged
+  m_TagString: TrainOn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8869810932229499625
 MeshFilter:
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8843986dc14ef3c448cbaf2e31578d0f, type: 2}
+  - {fileID: 2100000, guid: 9d3597de6ed1b9a408d75408fe1cc4f4, type: 2}
   - {fileID: 2100000, guid: bdb76dd4e900a7f47bf01a1f78f63fc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
